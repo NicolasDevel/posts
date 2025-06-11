@@ -19,9 +19,6 @@ RUN composer install --no-dev --optimize-autoloader
 # Establece permisos para el almacenamiento y los logs
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Configura Laravel
-RUN php artisan key:generate
-
 # Expone el puerto 80
 EXPOSE 80
 
