@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: laravel-app
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    disk:
+      name: persistent-data
+      mountPath: /var/www/html/storage
+      sizeGB: 1
