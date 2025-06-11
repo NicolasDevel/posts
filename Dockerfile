@@ -12,6 +12,12 @@ WORKDIR /var/www/html
 # Copia los archivos de tu proyecto
 COPY . .
 
+# Cambia el DocumentRoot de Apache para que apunte al directorio "public"
+RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
+
+# Activa el módulo Rewrite de Apache
+RUN a2enmod rewrite
+
 # Instala Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 RUN composer install --no-dev --optimize-autoloader
